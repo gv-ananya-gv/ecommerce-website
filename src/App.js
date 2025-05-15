@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Login from './pages/Login';
 import Header from './components/Header';
-
+import './App.css';
 
 const { Text } = Typography;
 
@@ -34,7 +34,7 @@ const App = () => {
         title="Shopping Cart"
         placement="right"
         onClose={() => setIsCartOpen(false)}
-        open={isCartOpen} // Ant Design v5 uses `open` instead of deprecated `visible`
+        open={isCartOpen} 
         width={350}
       >
         {cartItems.length === 0 ? (
