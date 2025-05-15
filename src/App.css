@@ -1,4 +1,23 @@
+/* Set global font and background */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen';
+  font-family: 'Poppins', sans-serif; 
+  background-color: #ffffff;           
+  color: #fff;                         
+}
+
+/* Optional: override Ant Design defaults */
+.ant-layout {
+  background: #000000; 
+}
+
+.ant-layout-header {
+  background-color: #ffffff; /* dark header */
+  color: white;
+}
+
+/* Buttons, Cards, etc. */
+.ant-btn-primary {
+  background-color: #a55b4b;
+  border-color: #2f0a02;
 }

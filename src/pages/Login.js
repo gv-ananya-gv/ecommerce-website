@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector(state => state.auth.error);  // safer access to error
+  const error = useSelector(state => state.auth.error);  
   const [loading, setLoading] = useState(false);
 
 
@@ -22,16 +22,16 @@ const Login = () => {
       const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
 
 
-      // Find user by email, case insensitive
+      // Find user by email
       const user = data.find(
         u => u.email.toLowerCase() === email.trim().toLowerCase()
       );
 
 
-      // Mock password check - replace with real auth in production
+      // Mock password check
       if (user && password === 'password') {
         dispatch(loginSuccess(user));
-        navigate('/');  // Redirect to home on success
+        navigate('/');  
       } else {
         dispatch(loginFailure('Invalid credentials.'));
       }

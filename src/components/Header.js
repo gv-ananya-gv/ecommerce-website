@@ -31,7 +31,7 @@ const Header = () => {
       }}
     >
       <h2 style={{ margin: 0 }}>
-        <Link to="/">🛒 Shopping Site</Link>
+        <Link to="/"> E-Commerce Website</Link>
       </h2>
 
 

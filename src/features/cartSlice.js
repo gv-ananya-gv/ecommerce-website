@@ -30,7 +30,6 @@ const cartSlice = createSlice({
         if (quantity > 0) {
           state.items[itemIndex].quantity = quantity;
         } else {
-          // Remove item if quantity is 0 or less
           state.items.splice(itemIndex, 1);
         }
       }

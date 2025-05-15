@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Header/Footer */
+.ant-layout-header {
+  background-color: #000000;
+  color: #000000;
+}
+
+.ant-layout-footer {
+  background-color: #000000;
+  color: #000000;
+  text-align: center;
+}
+
+/* Buttons */
+.ant-btn-primary {
+  background-color: #0ae06a;
+  border-color: #0ae06a;
+  color: #000000;
+  font-weight: 600;
+}
+
+.ant-btn-primary:hover {
+  background-color: #A55B4B;
+  border-color: #A55B4B;
+}
+
+/* Cards */
+.ant-card {
+  background-color: #ffffff;
+  color: #ffffff;
+}
+
+/* Links */
+a {
+  color: #1b74fa;
+}
+a:hover {
+  color: #031e48;
+}

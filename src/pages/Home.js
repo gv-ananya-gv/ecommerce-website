@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -74,16 +73,17 @@ const Home = () => {
           ))}
         </Select>
 
-
         <Slider
           range
           min={allPrices[0]}
-          max={allPrices[1]}
+          max={allPrices[1000]}
           step={1}
           value={priceRange}
           onChange={setPriceRange}
           style={{ width: 300 }}
-        />
+          tooltip={{ formatter: (value) => `$${value}` }}
+          />
+
 
 
         <Button onClick={clearFilters}>Clear Filters</Button>

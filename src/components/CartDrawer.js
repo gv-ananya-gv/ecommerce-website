@@ -2,7 +2,6 @@ import React from 'react';
 import { Drawer, List, Button, InputNumber, Typography, Space, Popconfirm } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../features/cartSlice';
-import { DeleteOutlined } from '@ant-design/icons';
 
 
 const { Text, Title } = Typography;
@@ -20,7 +19,6 @@ const CartDrawer = ({ open, onClose }) => {
   );
 
 
-  // Note: use productId key to match your slice payload
   const handleQuantityChange = (productId, value) => {
     if (value > 0) {
       dispatch(updateQuantity({ productId, quantity: value }));
@@ -38,7 +36,7 @@ const CartDrawer = ({ open, onClose }) => {
       title="Shopping Cart"
       placement="right"
       onClose={onClose}
-      open={open}   // correct usage
+      open={open}   
       width={400}
     >
       <List
@@ -53,16 +51,17 @@ const CartDrawer = ({ open, onClose }) => {
                 value={item.quantity}
                 onChange={value => handleQuantityChange(item.product.id, value)}
                 key="qty"
-              />,
-              <Popconfirm
+                />,
+                <Popconfirm
                 title="Remove this item?"
                 onConfirm={() => handleRemove(item.product.id)}
                 okText="Yes"
                 cancelText="No"
+                icon={null}
                 key="remove"
-              >
-                <Button danger icon={<DeleteOutlined />} />
-              </Popconfirm>,
+                >
+                <Button type="link">Remove this item</Button>
+                </Popconfirm>
             ]}
           >
             <List.Item.Meta
