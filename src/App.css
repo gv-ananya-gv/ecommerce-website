@@ -1,23 +1,22 @@
-/* Set global font and background */
+/* for global font and background */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif; 
   background-color: #ffffff;           
-  color: #fff;                         
+  color: #000000;                         
 }
 
-/* Optional: override Ant Design defaults */
 .ant-layout {
   background: #000000; 
 }
 
 .ant-layout-header {
-  background-color: #ffffff; /* dark header */
-  color: white;
+  background-color: #ffffff; 
+  color: #000000;
 }
 
 /* Buttons, Cards, etc. */
 .ant-btn-primary {
-  background-color: #a55b4b;
-  border-color: #2f0a02;
+  background-color: #05b6f7;
+  border-color: #02042f;
 }

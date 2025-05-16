@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
-import { Button } from 'antd';
+import { Button, Space, Typography } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import CartDrawer from './CartDrawer';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../features/authSlice';
 import { Link, useNavigate } from 'react-router-dom';
 
+const { Title, Text } = Typography;
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuthenticated, user } = useSelector(state => state.auth || {});
-
+  const { isAuthenticated, user } = useSelector((state) => state.auth || {});
 
   const handleLogout = () => {
     dispatch(logout());
     navigate('/login');
   };
-
 
   return (
     <div
@@ -26,20 +25,27 @@ const Header = () => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 16,
-        borderBottom: '1px solid #eee',
+        padding: '16px 24px',
+        borderBottom: '1px solid #f0f0f0',
+        backgroundColor: '#fff',
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000,
       }}
     >
-      <h2 style={{ margin: 0 }}>
-        <Link to="/"> E-Commerce Website</Link>
-      </h2>
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <Title level={3} style={{ margin: 0, color: '#1890ff' }}>
+          E-Commerce Website
+        </Title>
+      </Link>
 
-
-      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+      <Space size="middle">
         {isAuthenticated ? (
           <>
-            <span>Welcome, {user?.username}</span>
-            <Button onClick={handleLogout}>Logout</Button>
+            <Text>Welcome, {user?.username}</Text>
+            <Button onClick={handleLogout} type="primary">
+              Logout
+            </Button>
           </>
         ) : (
           <Link to="/login">
@@ -47,17 +53,18 @@ const Header = () => {
           </Link>
         )}
 
-
-        <Button icon={<ShoppingCartOutlined />} onClick={() => setOpen(true)}>
+        <Button
+          icon={<ShoppingCartOutlined />}
+          onClick={() => setOpen(true)}
+          type="primary"
+        >
           Cart
         </Button>
 
-
         <CartDrawer open={open} onClose={() => setOpen(false)} />
-      </div>
+      </Space>
     </div>
   );
 };
-
 
 export default Header;

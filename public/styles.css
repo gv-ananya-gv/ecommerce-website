@@ -7,7 +7,7 @@ body {
 
 /* Header/Footer */
 .ant-layout-header {
-  background-color: #000000;
+  background-color: #ffffff;
   color: #000000;
 }
 
@@ -26,14 +26,14 @@ body {
 }
 
 .ant-btn-primary:hover {
-  background-color: #A55B4B;
-  border-color: #A55B4B;
+  background-color: #60dd73;
+  border-color: #164802;
 }
 
 /* Cards */
 .ant-card {
   background-color: #ffffff;
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Links */
