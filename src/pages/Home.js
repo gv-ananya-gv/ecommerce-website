@@ -20,6 +20,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+//all working stuff go here in this line ie; filter, clear, search, pages
+
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
@@ -52,7 +54,7 @@ const Home = () => {
     setSearchTerm('');
   };
 
-  const paginatedProducts = filtered.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+const paginatedProducts = filtered.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
     <div style={{ padding: '20px' }}>
@@ -78,13 +80,13 @@ const Home = () => {
           }}
         />
 
-        <Select
-          placeholder="Select category"
-          onChange={(value) => setSelectedCategory(value)}
-          style={{ width: 200 }}
-          value={selectedCategory}
-          allowClear
-        >
+      <Select
+        placeholder="Select category"
+        onChange={(value) => setSelectedCategory(value)}
+        style={{ width: 200 }}
+        value={selectedCategory}
+        allowClear
+      >
           {categories.map((cat) => (
             <Option key={cat} value={cat}>
               {cat}
@@ -103,7 +105,7 @@ const Home = () => {
           tooltip={{ formatter: (value) => `$${value}` }}
         />
 
-        <Button onClick={clearFilters}>Clear Filters</Button>
+    <Button onClick={clearFilters}>Clear Filters</Button>
 
         <Pagination
           current={currentPage}
@@ -128,12 +130,12 @@ const Home = () => {
                   onClick={() => navigate(`/product/${product.id}`)}
                 />
               }
-              actions={[
-                <Button type="primary" onClick={() => dispatch(addToCart(product))}>
-                  Add to Cart
+        actions={[
+          <Button type="primary" onClick={() => dispatch(addToCart(product))}>
+                 Add to Cart
                 </Button>,
               ]}
-            >
+          >
               <Card.Meta title={product.title} description={`$${product.price}`} />
             </Card>
           </Col>
