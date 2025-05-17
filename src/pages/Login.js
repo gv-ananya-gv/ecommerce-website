@@ -5,29 +5,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginSuccess, loginFailure } from '../features/authSlice';
 import { useNavigate } from 'react-router-dom';
 
-
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const error = useSelector(state => state.auth.error);  
   const [loading, setLoading] = useState(false);
 
-
   const handleLogin = async ({ email, password }) => {
     setLoading(true);
-
 
     try {
       // Fetch users (mock)
       const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
-
-
       // Find user by email
       const user = data.find(
         u => u.email.toLowerCase() === email.trim().toLowerCase()
       );
-
-
       // Mock password check
       if (user && password === 'password') {
         dispatch(loginSuccess(user));
@@ -41,7 +34,6 @@ const Login = () => {
       setLoading(false);
     }
   };
-
 
   return (
     <div style={{ maxWidth: 400, margin: '50px auto' }}>

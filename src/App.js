@@ -12,14 +12,12 @@ import './App.css';
 
 const { Text } = Typography;
 
-
 const App = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-
-  // Correct total price calculation using product.price
+  // total price calc
   const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0
