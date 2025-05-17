@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Drawer, Typography, Button, InputNumber, List } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from './features/cartSlice';
+import ProductList from "./components/ProductList";
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Login from './pages/Login';
@@ -80,6 +81,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/" element={<ProductList />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
       </Routes>

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Row, Col, Card, Select, Slider, Button } from 'antd';
+import { Row, Col, Card, Select, Slider, Button, Input } from 'antd';
 import { addToCart } from '../features/cartSlice';
 
-
 const { Option } = Select;
-
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -15,11 +13,10 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [allPrices, setAllPrices] = useState([0, 1000]);
-
+  const [searchTerm, setSearchTerm] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -36,29 +33,47 @@ const Home = () => {
       });
   }, []);
 
-
   useEffect(() => {
     let result = [...products];
     if (selectedCategory) {
       result = result.filter((p) => p.category === selectedCategory);
     }
     result = result.filter((p) => p.price >= priceRange[0] && p.price <= priceRange[1]);
+    result = result.filter((p) => p.title.toLowerCase().includes(searchTerm.toLowerCase()));
     setFiltered(result);
-  }, [selectedCategory, priceRange, products]);
-
+  }, [selectedCategory, priceRange, products, searchTerm]);
 
   const clearFilters = () => {
     setSelectedCategory(null);
     setPriceRange(allPrices);
+    setSearchTerm('');
   };
-
 
   return (
     <div style={{ padding: '20px' }}>
       <h1>Product Store</h1>
 
+      {/* Filters Container */}
+      <div
+        style={{
+          marginBottom: 20,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '20px',
+          flexWrap: 'wrap',
+        }}
+      >
+        <Input
+          placeholder="Search products by name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{
+            width: 200,
+            height: 40,
+            borderRadius: 4,
+          }}
+        />
 
-      <div style={{ marginBottom: 20, display: 'flex', alignItems: 'center', gap: '20px' }}>
         <Select
           placeholder="Select category"
           onChange={(value) => setSelectedCategory(value)}
@@ -76,19 +91,16 @@ const Home = () => {
         <Slider
           range
           min={allPrices[0]}
-          max={allPrices[1000]}
+          max={allPrices[1]}
           step={1}
           value={priceRange}
           onChange={setPriceRange}
           style={{ width: 300 }}
           tooltip={{ formatter: (value) => `$${value}` }}
-          />
-
-
+        />
 
         <Button onClick={clearFilters}>Clear Filters</Button>
       </div>
-
 
       <Row gutter={[16, 16]}>
         {filtered.map((product) => (
@@ -118,7 +130,4 @@ const Home = () => {
   );
 };
 
-
 export default Home;
-
-
