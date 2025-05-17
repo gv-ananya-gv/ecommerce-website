@@ -29,8 +29,7 @@ const ProductList = () => {
           Product Store
         </Title>
 
-        {/* Debug-wrapped Search Bar */}
-        <div style={{ border: "2px solid red", padding: 8, width: "100%", maxWidth: 420, margin: "0 auto" }}>
+        <div style={{ border: "2px solid #000000", padding: 8, width: "100%", maxWidth: 420, margin: "0 auto" }}>
           <Input
             placeholder="Search products by name"
             value={searchTerm}
@@ -38,7 +37,7 @@ const ProductList = () => {
             style={{
               width: '100%',
               borderRadius: 4,
-              boxShadow: '0 0 4px rgba(0,0,0,0.1)',
+              boxShadow: '0 0 4px #000000',
               height: 40,
             }}
           />

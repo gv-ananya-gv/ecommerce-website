@@ -18,8 +18,8 @@ const authSlice = createSlice({
       state.error = null;
     },
     loginFailure: (state, action) => {
-      state.user = null;             // Clear user on failure
-      state.isAuthenticated = false; // Clear auth flag on failure
+      state.user = null;             // clear user on failure
+      state.isAuthenticated = false; // clear auth flag on failure
       state.error = action.payload;
     },
     logout: (state) => {

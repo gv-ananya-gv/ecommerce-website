@@ -22,7 +22,8 @@ const cartSlice = createSlice({
     removeFromCart: (state, action) => {
       state.items = state.items.filter(item => item.product.id !== action.payload);
     },
-    updateQuantity: (state, action) => {
+
+  updateQuantity: (state, action) => {
       const { productId, quantity } = action.payload;
       const itemIndex = state.items.findIndex(item => item.product.id === productId);
       if (itemIndex !== -1) {
@@ -33,7 +34,7 @@ const cartSlice = createSlice({
         }
       }
     },
-    clearCart: (state) => {
+clearCart: (state) => {
       state.items = [];
     }
   },
