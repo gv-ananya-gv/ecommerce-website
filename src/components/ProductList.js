@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 const { Title } = Typography;
 const { Meta } = Card;
 
+//fetches from API to store in product list
+
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,6 +19,8 @@ const ProductList = () => {
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("API Error:", err));
   }, []);
+
+//filter made case insensitive
 
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())

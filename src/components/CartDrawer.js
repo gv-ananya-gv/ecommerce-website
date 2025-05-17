@@ -72,7 +72,6 @@ const CartDrawer = ({ open, onClose }) => {
                     onConfirm={() => handleRemove(item.product.id)}
                     okText="Yes"
                     cancelText="No"
-                    icon={null}
                   >
                     <Button type="link" danger size="small">
                       Remove

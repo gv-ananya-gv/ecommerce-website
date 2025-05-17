@@ -28,10 +28,10 @@ const Login = () => {
         dispatch(loginSuccess(user));
         navigate('/');  
       } else {
-        dispatch(loginFailure('Invalid credentials.'));
+        dispatch(loginFailure('Either your email or password is incorrect.'));
       }
     } catch (err) {
-      dispatch(loginFailure('Login failed. Please try again.'));
+      dispatch(loginFailure('Login failed. Try again.'));
     } finally {
       setLoading(false);
     }
@@ -67,7 +67,6 @@ const Login = () => {
           <Alert
             message={error}
             type="error"
-            showIcon
             style={{ marginBottom: 16 }}
           />
         )}
