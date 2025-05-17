@@ -15,13 +15,15 @@ const Login = () => {
     setLoading(true);
 
     try {
-      // Fetch users (mock)
+      //fetch mock users from API
       const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
-      // Find user by email
+
+      //find user using email
       const user = data.find(
         u => u.email.toLowerCase() === email.trim().toLowerCase()
       );
-      // Mock password check
+
+      //password check
       if (user && password === 'password') {
         dispatch(loginSuccess(user));
         navigate('/');  
@@ -35,6 +37,7 @@ const Login = () => {
     }
   };
 
+  //generic error warnings go here
   return (
     <div style={{ maxWidth: 400, margin: '50px auto' }}>
       <h2>Login</h2>

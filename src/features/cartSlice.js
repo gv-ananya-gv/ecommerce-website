@@ -5,6 +5,7 @@ const initialState = {
   items: [], // { product, quantity }
 };
 
+//for cart control ie; addition, deletion, increase, clear entirely
 
 const cartSlice = createSlice({
   name: 'cart',

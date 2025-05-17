@@ -6,11 +6,10 @@ import { Card, Typography } from "antd";
 
 const { Title, Paragraph } = Typography;
 
-
+//fetch products from API into product cards
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-
 
   useEffect(() => {
     axios

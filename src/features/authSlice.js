@@ -7,6 +7,7 @@ const initialState = {
   error: null,
 };
 
+//checking login success or failure
 
 const authSlice = createSlice({
   name: 'auth',
